@@ -1,0 +1,45 @@
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import { prisma } from "../../lib/prisma";
+import AdminManager from "./AdminManager";
+
+// ضع إيميلك أو إيميلات الإدارة هنا
+const ADMIN_EMAILS = ["admin@pcbuilder.com"];
+
+export default async function AdminDashboard() {
+  const session = await getServerSession();
+
+  // 1. التحقق من تسجيل الدخول
+  if (!session) {
+    redirect("/api/auth/signin?callbackUrl=/admin");
+  }
+
+  // 2. التحقق من الصلاحية (هل الإيميل ضمن قائمة الإدارة؟)
+  if (!session.user?.email || !ADMIN_EMAILS.includes(session.user.email)) {
+    redirect("/"); // طرد المستخدم العادي للصفحة الرئيسية
+  }
+
+  const categories = await prisma.category.findMany();
+  const components = await prisma.component.findMany({
+    include: { category: true },
+    orderBy: { createdAt: 'desc' }
+  });
+  const news = await prisma.news.findMany({
+    orderBy: { createdAt: 'desc' }
+  });
+
+  return (
+    <main className="min-h-screen bg-gray-50 dark:bg-slate-950 py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-200">
+      <div className="max-w-6xl mx-auto">
+        <div className="flex justify-between items-center border-b-2 border-gray-200 dark:border-slate-800 pb-4 mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">لوحة تحكم النظام</h1>
+          <span className="px-4 py-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold rounded-lg shadow-sm">
+            مدير النظام
+          </span>
+        </div>
+        
+        <AdminManager categories={categories} components={components} news={news} />
+      </div>
+    </main>
+  );
+}

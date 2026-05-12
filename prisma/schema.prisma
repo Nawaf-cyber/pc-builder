@@ -1,0 +1,61 @@
+// /prisma/schema.prisma
+
+datasource db {
+  provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// 1. جدول الفئات (Categories)
+model Category {
+  id         String      @id @default(cuid())
+  name       String      @unique 
+  components Component[]
+}
+
+// 2. جدول القطع (Components)
+model Component {
+  id          String   @id @default(cuid())
+  categoryId  String
+  category    Category @relation(fields: [categoryId], references: [id])
+  brand       String   
+  name        String   
+  price       Float    @default(0)
+  tdpWattage  Int      @default(0)
+  specs       Json     
+  imageUrl    String?  
+  amazonUrl   String?  // رابط أمازون
+  cazasouqUrl String?  // رابط كازاسوق
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([categoryId])
+}
+
+// 3. جدول المستخدمين (Users)
+enum Role {
+  USER
+  ADMIN
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String?
+  email     String   @unique
+  password  String
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+}
+
+// 4. جدول الأخبار (News)
+model News {
+  id        String   @id @default(cuid())
+  title     String
+  summary   String   @default("بدون ملخص")
+  content   String
+  category  String   @default("عام")
+  imageUrl  String?  // دعم الصور
+  createdAt DateTime @default(now())
+}

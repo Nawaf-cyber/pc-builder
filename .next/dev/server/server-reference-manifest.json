@@ -1,0 +1,78 @@
+{
+  "node": {
+    "40a19a5fd76f6ad961c957629790fb4412e0068430": {
+      "workers": {
+        "app/admin/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": true,
+          "exportedName": "addComponent",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "addComponent"
+    },
+    "40fc32d61661bed40449551806a85f7fc4ab91fb5f": {
+      "workers": {
+        "app/admin/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": true,
+          "exportedName": "deleteComponent",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "deleteComponent"
+    },
+    "40028a2cf6f66216964b543efcd2e6af3e4245c15d": {
+      "workers": {
+        "app/admin/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": true,
+          "exportedName": "addNews",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "addNews"
+    },
+    "40bc0a41ac57bbbeebae4d4d1be6b2095828056013": {
+      "workers": {
+        "app/admin/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": true,
+          "exportedName": "deleteNews",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "deleteNews"
+    },
+    "40b73651b8335a497fdcca3f8cbf209ba410c27f02": {
+      "workers": {
+        "app/admin/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": true,
+          "exportedName": "updateComponent",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "updateComponent"
+    },
+    "40baa6990eb598f66001ef77d05c4663537512d0dd": {
+      "workers": {
+        "app/admin/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": true,
+          "exportedName": "updateNews",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "updateNews"
+    }
+  },
+  "edge": {},
+  "encryptionKey": "JnNd5Nkp3y4zULfFp+iCN1G67Db45rbIIxB0cJ++qNI="
+}

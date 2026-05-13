@@ -10,12 +10,13 @@ export async function addComponent(formData: FormData) {
   const price = parseFloat(formData.get('price') as string);
   const tdpWattage = parseInt(formData.get('tdpWattage') as string);
   const specs = JSON.parse(formData.get('specs') as string);
+  const description = formData.get('description') as string || null;
   const imageUrl = formData.get('imageUrl') as string || null;
   const amazonUrl = formData.get('amazonUrl') as string || null;
   const cazasouqUrl = formData.get('cazasouqUrl') as string || null;
 
   await prisma.component.create({
-    data: { categoryId, brand, name, price, tdpWattage, specs, imageUrl, amazonUrl, cazasouqUrl }
+    data: { categoryId, brand, name, price, tdpWattage, specs, description, imageUrl, amazonUrl, cazasouqUrl }
   });
 
   revalidatePath('/admin');
@@ -30,13 +31,14 @@ export async function updateComponent(formData: FormData) {
   const price = parseFloat(formData.get('price') as string);
   const tdpWattage = parseInt(formData.get('tdpWattage') as string);
   const specs = JSON.parse(formData.get('specs') as string);
+  const description = formData.get('description') as string || null;
   const imageUrl = formData.get('imageUrl') as string || null;
   const amazonUrl = formData.get('amazonUrl') as string || null;
   const cazasouqUrl = formData.get('cazasouqUrl') as string || null;
 
   await prisma.component.update({
     where: { id },
-    data: { categoryId, brand, name, price, tdpWattage, specs, imageUrl, amazonUrl, cazasouqUrl }
+    data: { categoryId, brand, name, price, tdpWattage, specs, description, imageUrl, amazonUrl, cazasouqUrl }
   });
 
   revalidatePath('/admin');

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 type Component = {
   id: string;
@@ -12,6 +12,7 @@ type Component = {
   imageUrl?: string | null;
   amazonUrl?: string | null;
   cazasouqUrl?: string | null;
+  description?: string | null; // إضافة الوصف هنا
 };
 
 type Category = {
@@ -20,9 +21,103 @@ type Category = {
   components: Component[];
 };
 
+// مكون القائمة المنسدلة القابلة للبحث
+const SearchableSelect = ({ 
+  category, 
+  selectedComponent, 
+  onSelect, 
+  onShowDetails 
+}: { 
+  category: Category, 
+  selectedComponent: Component | null, 
+  onSelect: (id: string) => void,
+  onShowDetails: (comp: Component) => void
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  // إغلاق القائمة عند النقر خارجها
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const filteredComponents = category.components.filter(c => 
+    `${c.brand} ${c.name}`.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  return (
+    <div className="relative flex-1" ref={wrapperRef}>
+      <div 
+        className="p-3 border border-gray-200 dark:border-slate-700 rounded-lg bg-gray-50 dark:bg-slate-800 cursor-pointer flex justify-between items-center"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <span className="truncate text-gray-800 dark:text-gray-100">
+          {selectedComponent ? `${selectedComponent.brand} ${selectedComponent.name} - $${selectedComponent.price}` : `-- اختر ${category.name} --`}
+        </span>
+        <span className="text-gray-500">▼</span>
+      </div>
+
+      {isOpen && (
+        <div className="absolute z-20 w-full mt-1 bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg shadow-xl">
+          <div className="p-2 border-b border-gray-100 dark:border-slate-700">
+            <input
+              type="text"
+              className="w-full p-2 border border-gray-300 dark:border-slate-600 rounded-md outline-none focus:ring-2 focus:ring-blue-500 dark:bg-slate-700 dark:text-white"
+              placeholder={`ابحث في ${category.name}...`}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              onClick={(e) => e.stopPropagation()}
+              autoFocus
+            />
+          </div>
+          <ul className="max-h-60 overflow-y-auto">
+            {filteredComponents.length > 0 ? (
+              filteredComponents.map((comp) => (
+                <li 
+                  key={comp.id} 
+                  className="p-3 hover:bg-blue-50 dark:hover:bg-slate-700 cursor-pointer flex justify-between items-center border-b border-gray-50 dark:border-slate-700/50 last:border-0"
+                  onClick={() => {
+                    onSelect(comp.id);
+                    setIsOpen(false);
+                    setSearchTerm('');
+                  }}
+                >
+                  <span className="text-gray-800 dark:text-gray-200">{comp.brand} {comp.name}</span>
+                  <div className="flex items-center gap-3">
+                    <span className="font-bold text-blue-600 dark:text-blue-400">${comp.price}</span>
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation(); // منع اختيار القطعة عند النقر على التفاصيل
+                        onShowDetails(comp);
+                      }}
+                      className="px-2 py-1 text-xs bg-gray-200 dark:bg-slate-600 hover:bg-gray-300 dark:hover:bg-slate-500 text-gray-800 dark:text-white rounded"
+                    >
+                      التفاصيل
+                    </button>
+                  </div>
+                </li>
+              ))
+            ) : (
+              <li className="p-3 text-gray-500 text-center">لا توجد نتائج</li>
+            )}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+};
+
 export default function PCBuilderClient({ categories }: { categories: Category[] }) {
   const [selectedComponents, setSelectedComponents] = useState<Record<string, Component | null>>({});
   const [result, setResult] = useState<{ status: 'success' | 'error' | 'idle', message: string, totalTdp: number, totalPrice: number }>({ status: 'idle', message: '', totalTdp: 0, totalPrice: 0 });
+  const [detailsModal, setDetailsModal] = useState<Component | null>(null);
 
   const handleSelect = (categoryName: string, componentId: string) => {
     const category = categories.find(c => c.name === categoryName);
@@ -57,46 +152,74 @@ export default function PCBuilderClient({ categories }: { categories: Category[]
       return;
     }
 
-    if (cpu.specs?.socket !== mobo.specs?.socket) {
-      setResult({ status: 'error', message: `عدم توافق: المعالج بمقبس ${cpu.specs?.socket} واللوحة الأم بمقبس ${mobo.specs?.socket}.`, totalTdp, totalPrice });
+    // تحليل المواصفات (Parsing JSON) لأنها تأتي كنص من قاعدة البيانات
+    const getSpecs = (comp: Component) => typeof comp.specs === 'string' ? JSON.parse(comp.specs || '{}') : comp.specs;
+
+    const cpuSpecs = getSpecs(cpu);
+    const moboSpecs = getSpecs(mobo);
+    const ramSpecs = getSpecs(ram);
+    const gpuSpecs = getSpecs(gpu);
+    const caseSpecs = getSpecs(pcCase);
+    const psuSpecs = getSpecs(psu);
+
+    if (cpuSpecs?.socket !== moboSpecs?.socket) {
+      setResult({ status: 'error', message: `عدم توافق: المعالج بمقبس ${cpuSpecs?.socket} واللوحة الأم بمقبس ${moboSpecs?.socket}.`, totalTdp, totalPrice });
       return;
     }
 
-    if (ram.specs?.type !== mobo.specs?.ramType) {
-      setResult({ status: 'error', message: `عدم توافق: اللوحة الأم تدعم ${mobo.specs?.ramType} والرام المختار من نوع ${ram.specs?.type}.`, totalTdp, totalPrice });
+    if (ramSpecs?.type !== moboSpecs?.ramType) {
+      setResult({ status: 'error', message: `عدم توافق: اللوحة الأم تدعم ${moboSpecs?.ramType} والرام المختار من نوع ${ramSpecs?.type}.`, totalTdp, totalPrice });
       return;
     }
 
-    if (gpu.specs?.lengthMm > pcCase.specs?.maxGpuLength) {
-      setResult({ status: 'error', message: `عدم توافق: طول كرت الشاشة (${gpu.specs?.lengthMm}mm) أكبر من المساحة المتاحة في الكيس (${pcCase.specs?.maxGpuLength}mm).`, totalTdp, totalPrice });
+    if (gpuSpecs?.lengthMm > caseSpecs?.maxGpuLength) {
+      setResult({ status: 'error', message: `عدم توافق: طول كرت الشاشة (${gpuSpecs?.lengthMm}mm) أكبر من المساحة المتاحة في الكيس (${caseSpecs?.maxGpuLength}mm).`, totalTdp, totalPrice });
       return;
     }
 
     const requiredWattage = totalTdp + 100;
-    if (psu.specs?.wattage < requiredWattage) {
-      setResult({ status: 'error', message: `تحذير طاقة: الاستهلاك التقريبي مع هامش الأمان (${requiredWattage} واط) يتجاوز قدرة مزود الطاقة (${psu.specs?.wattage} واط).`, totalTdp, totalPrice });
+    if (psuSpecs?.wattage < requiredWattage) {
+      setResult({ status: 'error', message: `تحذير طاقة: الاستهلاك التقريبي مع هامش الأمان (${requiredWattage} واط) يتجاوز قدرة مزود الطاقة (${psuSpecs?.wattage} واط).`, totalTdp, totalPrice });
       return;
     }
 
     setResult({ status: 'success', message: 'تم التوافق! جميع القطع متوافقة تماماً.', totalTdp, totalPrice });
   };
 
+  // دالة مساعدة لتنسيق المواصفات في النافذة المنبثقة
+  const renderSpecs = (specsStr: any) => {
+    if (!specsStr) return "لا توجد تفاصيل إضافية.";
+    try {
+      const parsed = typeof specsStr === 'string' ? JSON.parse(specsStr) : specsStr;
+      return (
+        <ul className="list-disc list-inside space-y-1 mt-2 text-gray-700 dark:text-gray-300">
+          {Object.entries(parsed).map(([key, value]) => (
+            <li key={key}><span className="font-semibold capitalize">{key}:</span> {String(value)}</li>
+          ))}
+        </ul>
+      );
+    } catch (e) {
+      return String(specsStr);
+    }
+  };
+
   return (
-    <div className="max-w-5xl mx-auto mt-10 bg-white dark:bg-slate-900 rounded-2xl shadow-xl overflow-hidden border border-gray-100 dark:border-slate-800 transition-colors duration-200">
+    <div className="max-w-5xl mx-auto mt-10 bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-gray-100 dark:border-slate-800">
       
-      <div className="bg-gradient-to-r from-blue-900 to-blue-700 dark:from-slate-800 dark:to-slate-900 p-8 text-center text-white border-b border-transparent dark:border-slate-700">
+      {/* رأس الصفحة */}
+      <div className="bg-gradient-to-r from-blue-900 to-blue-700 dark:from-slate-800 dark:to-slate-900 p-8 text-center text-white rounded-t-2xl">
         <h1 className="text-3xl font-bold mb-2 flex items-center justify-center gap-3">
           <span>💻</span> منصة بناء أجهزة الـ PC
         </h1>
-        <p className="text-blue-100 dark:text-gray-300 text-sm">اختر القطع من القوائم بالأسفل وتأكد من توافقها قبل الشراء</p>
+        <p className="text-blue-100 dark:text-gray-300 text-sm">اختر القطع، ابحث عنها، وتأكد من توافقها</p>
       </div>
 
       <div className="p-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
           {categories.map((category) => (
             <div key={category.id} className="flex flex-col gap-2">
               <label className="font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2 mb-1">
-                <span className="w-2 h-2 rounded-full bg-blue-500 dark:bg-blue-400"></span>
+                <span className="w-2 h-2 rounded-full bg-blue-500"></span>
                 {category.name}
               </label>
               
@@ -105,89 +228,101 @@ export default function PCBuilderClient({ categories }: { categories: Category[]
                   <img 
                     src={selectedComponents[category.name]?.imageUrl as string} 
                     alt={selectedComponents[category.name]?.name}
-                    className="w-14 h-14 rounded-lg object-contain bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 p-1 shadow-sm" 
+                    className="w-14 h-14 rounded-lg object-contain bg-white dark:bg-slate-800 border p-1 shadow-sm" 
                   />
                 )}
-                <select
-                  className="flex-1 p-3 border border-gray-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-gray-50 dark:bg-slate-800 hover:bg-white dark:hover:bg-slate-700 transition-colors cursor-pointer shadow-sm text-gray-800 dark:text-gray-100"
-                  onChange={(e) => handleSelect(category.name, e.target.value)}
-                  value={selectedComponents[category.name]?.id || ''}
-                >
-                  <option value="" disabled>-- اختر {category.name} --</option>
-                  {category.components.map((comp) => (
-                    <option key={comp.id} value={comp.id}>
-                      {comp.brand} {comp.name} - ${comp.price}
-                    </option>
-                  ))}
-                </select>
+                
+                {/* استدعاء المكون الجديد بدلاً من <select> */}
+                <SearchableSelect 
+                  category={category}
+                  selectedComponent={selectedComponents[category.name]}
+                  onSelect={(id) => handleSelect(category.name, id)}
+                  onShowDetails={(comp) => setDetailsModal(comp)}
+                />
               </div>
-
             </div>
           ))}
         </div>
 
         <button
           onClick={checkCompatibility}
-          className="w-full py-4 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-bold text-lg rounded-xl transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+          className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-xl transition-all shadow-md"
         >
           تحقق من التوافقية
         </button>
 
+        {/* عرض نتيجة التوافق */}
         {result.status !== 'idle' && (
-          <div className={`mt-8 p-6 rounded-xl border ${result.status === 'success' ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800' : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800'}`}>
-            <div className="flex items-start gap-4">
+          <div className={`mt-8 p-6 rounded-xl border ${result.status === 'success' ? 'bg-green-50 dark:bg-green-900/20 border-green-200' : 'bg-red-50 dark:bg-red-900/20 border-red-200'}`}>
+             <div className="flex items-start gap-4">
               <div className="text-2xl">{result.status === 'success' ? '✅' : '❌'}</div>
               <div className="flex-1">
                 <h3 className={`text-lg font-bold mb-2 ${result.status === 'success' ? 'text-green-800 dark:text-green-400' : 'text-red-800 dark:text-red-400'}`}>
                   {result.message}
                 </h3>
-                <div className={`mt-4 pt-4 border-t flex flex-col sm:flex-row justify-between gap-4 ${result.status === 'success' ? 'border-green-200 dark:border-green-800 text-green-700 dark:text-green-300' : 'border-red-200 dark:border-red-800 text-red-700 dark:text-red-300'}`}>
-                  <div className="flex items-center gap-2 bg-white/50 dark:bg-black/20 px-4 py-2 rounded-lg">
-                    <span className="font-bold">⚡ استهلاك الطاقة:</span>
-                    <span className="font-black text-lg">{result.totalTdp}W</span>
-                  </div>
-                  <div className="flex items-center gap-2 bg-white/50 dark:bg-black/20 px-4 py-2 rounded-lg">
-                    <span className="font-bold">💰 التكلفة الإجمالية:</span>
-                    <span className="font-black text-lg">${result.totalPrice}</span>
-                  </div>
+                <div className="mt-4 flex gap-4 text-sm font-bold">
+                  <span>⚡ الطاقة المطلوبة: {result.totalTdp}W</span>
+                  <span>💰 التكلفة: ${result.totalPrice}</span>
                 </div>
-
-                {/* روابط الشراء - تظهر فقط عند التوافق */}
-                {result.status === 'success' && (
-                  <div className="mt-6 pt-6 border-t border-green-200 dark:border-green-800">
-                    <h4 className="font-bold text-gray-800 dark:text-gray-200 mb-4">🛒 روابط الشراء للقطع المختارة:</h4>
-                    <div className="flex flex-col gap-3">
-                      {Object.entries(selectedComponents).map(([catName, comp]) => {
-                        if (!comp || (!comp.amazonUrl && !comp.cazasouqUrl)) return null;
-                        return (
-                          <div key={catName} className="flex flex-col sm:flex-row sm:items-center justify-between bg-white/60 dark:bg-slate-800/60 p-3 rounded-lg border border-green-100 dark:border-green-900/30">
-                            <span className="font-semibold text-gray-700 dark:text-gray-300 mb-2 sm:mb-0">
-                              {catName}: {comp.brand} {comp.name}
-                            </span>
-                            <div className="flex gap-2">
-                              {comp.amazonUrl && (
-                                <a href={comp.amazonUrl} target="_blank" rel="noopener noreferrer" className="px-4 py-1.5 bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-bold rounded-md transition-colors shadow-sm text-center">
-                                  Amazon
-                                </a>
-                              )}
-                              {comp.cazasouqUrl && (
-                                <a href={comp.cazasouqUrl} target="_blank" rel="noopener noreferrer" className="px-4 py-1.5 bg-purple-600 hover:bg-purple-700 text-white text-sm font-bold rounded-md transition-colors shadow-sm text-center">
-                                  Cazasouq
-                                </a>
-                              )}
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                )}
-
               </div>
             </div>
           </div>
         )}
       </div>
+
+      {/* النافذة المنبثقة (Modal) لعرض التفاصيل */}
+      {detailsModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+          <div className="bg-white dark:bg-slate-900 rounded-2xl w-full max-w-md shadow-2xl border border-gray-200 dark:border-slate-700 overflow-hidden">
+            <div className="flex justify-between items-center p-4 border-b dark:border-slate-800 bg-gray-50 dark:bg-slate-800">
+              <h2 className="font-bold text-xl text-gray-900 dark:text-white">تفاصيل القطعة</h2>
+              <button 
+                onClick={() => setDetailsModal(null)}
+                className="text-gray-500 hover:text-red-500 font-bold text-xl transition-colors"
+              >
+                ✕
+              </button>
+            </div>
+            <div className="p-6">
+              <div className="mb-4">
+                <span className="text-sm font-bold text-blue-600 dark:text-blue-400">{detailsModal.brand}</span>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mt-1">{detailsModal.name}</h3>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-4 mb-6">
+                <div className="bg-gray-50 dark:bg-slate-800 p-3 rounded-lg">
+                  <span className="block text-sm text-gray-500 dark:text-gray-400">السعر</span>
+                  <span className="font-bold text-lg dark:text-white">${detailsModal.price}</span>
+                </div>
+                <div className="bg-gray-50 dark:bg-slate-800 p-3 rounded-lg">
+                  <span className="block text-sm text-gray-500 dark:text-gray-400">استهلاك الطاقة</span>
+                  <span className="font-bold text-lg dark:text-white">{detailsModal.tdpWattage}W</span>
+                </div>
+              </div>
+
+              <div className="mb-6">
+                <h4 className="font-bold text-gray-900 dark:text-gray-200 border-b dark:border-slate-700 pb-2 mb-2">المواصفات التقنية:</h4>
+                {renderSpecs(detailsModal.specs)}
+              </div>
+
+              {/* === أضف هذا القسم الجديد الخاص بالوصف هنا === */}
+              <div className="mb-6">
+                <h4 className="font-bold text-gray-900 dark:text-gray-200 border-b dark:border-slate-700 pb-2 mb-2">وصف القطعة:</h4>
+                <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed whitespace-pre-line">
+                  {detailsModal.description || "لا يوجد وصف متوفر لهذه القطعة."}
+                </p>
+              </div>
+              
+              <button 
+                onClick={() => setDetailsModal(null)}
+                className="w-full py-3 bg-gray-200 hover:bg-gray-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-gray-800 dark:text-white rounded-xl font-bold transition-colors"
+              >
+                إغلاق
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

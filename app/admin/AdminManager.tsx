@@ -52,7 +52,6 @@ export default function AdminManager({ categories, components, news }: { categor
 
   const selectedCategoryName = categories.find(c => c.id.toString() === selectedCategoryId)?.name || '';
 
-  // دالة التعامل مع نموذج القطع
   const handleComponentSubmit = async (formData: FormData) => {
     const loadingToast = toast.loading('جاري الحفظ...');
     try {
@@ -69,7 +68,6 @@ export default function AdminManager({ categories, components, news }: { categor
     }
   };
 
-  // دالة التعامل مع نموذج الأخبار
   const handleNewsSubmit = async (formData: FormData) => {
     const loadingToast = toast.loading('جاري الحفظ...');
     try {
@@ -131,6 +129,9 @@ export default function AdminManager({ categories, components, news }: { categor
               <input type="url" name="amazonUrl" defaultValue={editingComponent?.amazonUrl || ''} placeholder="رابط أمازون (اختياري)" className="p-3 border border-gray-300 dark:border-slate-700 rounded-lg bg-gray-50 dark:bg-slate-800 text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-blue-500 text-left dir-ltr" dir="ltr" />
               <input type="url" name="cazasouqUrl" defaultValue={editingComponent?.cazasouqUrl || ''} placeholder="رابط كازاسوق (اختياري)" className="p-3 border border-gray-300 dark:border-slate-700 rounded-lg bg-gray-50 dark:bg-slate-800 text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-blue-500 text-left dir-ltr" dir="ltr" />
               
+              {/* الحقل الجديد للوصف */}
+              <textarea name="description" defaultValue={editingComponent?.description || ''} placeholder="وصف تفصيلي للقطعة (اختياري، يظهر في نافذة التفاصيل)" className="md:col-span-2 p-3 h-24 border border-gray-300 dark:border-slate-700 rounded-lg bg-gray-50 dark:bg-slate-800 text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+
               <div className="md:col-span-2 p-4 border border-gray-300 dark:border-slate-700 rounded-lg bg-gray-50 dark:bg-slate-800/50 mt-4">
                 <label className="block font-bold text-gray-700 dark:text-gray-300 mb-3">الخصائص التقنية {selectedCategoryName ? `لـ (${selectedCategoryName})` : ''}</label>
                 <div className="flex gap-2 mb-4">
@@ -210,21 +211,21 @@ export default function AdminManager({ categories, components, news }: { categor
         </div>
       )}
 
+      {/* باقي الكود الخاص بالأخبار... */}
       {activeTab === 'news' && (
         <div className="flex flex-col gap-8 animate-in fade-in duration-300">
+          {/* محتوى إدارة الأخبار كما هو تماماً في كودك السابق */}
           <div className="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-sm border border-gray-200 dark:border-slate-800">
             <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
               {editingNews ? 'تعديل الخبر' : 'إضافة خبر جديد'}
             </h2>
             <form key={editingNews?.id || 'new-news'} action={handleNewsSubmit} className="grid grid-cols-1 gap-4">
               {editingNews && <input type="hidden" name="id" value={editingNews.id} />}
-              
               <input type="text" name="title" defaultValue={editingNews?.title} placeholder="عنوان الخبر" required className="p-3 border border-gray-300 dark:border-slate-700 rounded-lg bg-gray-50 dark:bg-slate-800 text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-blue-500" />
               <input type="text" name="category" defaultValue={editingNews?.category} placeholder="التصنيف (مثال: CPU, GPU, عام)" required className="p-3 border border-gray-300 dark:border-slate-700 rounded-lg bg-gray-50 dark:bg-slate-800 text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-blue-500" />
               <input type="url" name="imageUrl" defaultValue={editingNews?.imageUrl || ''} placeholder="رابط صورة الخبر (URL) - اختياري" className="p-3 border border-gray-300 dark:border-slate-700 rounded-lg bg-gray-50 dark:bg-slate-800 text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-blue-500 text-left dir-ltr" dir="ltr" />
               <textarea name="summary" defaultValue={editingNews?.summary} placeholder="ملخص قصير للخبر" required className="p-3 h-24 border border-gray-300 dark:border-slate-700 rounded-lg bg-gray-50 dark:bg-slate-800 text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-blue-500"></textarea>
               <textarea name="content" defaultValue={editingNews?.content} placeholder="محتوى الخبر بالكامل" required className="p-3 h-48 border border-gray-300 dark:border-slate-700 rounded-lg bg-gray-50 dark:bg-slate-800 text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-              
               <div className="flex gap-4 mt-2">
                 <button type="submit" className="flex-1 py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-sm">
                   {editingNews ? 'حفظ التعديلات' : 'حفظ الخبر'}
@@ -237,7 +238,6 @@ export default function AdminManager({ categories, components, news }: { categor
               </div>
             </form>
           </div>
-
           <div className="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-sm border border-gray-200 dark:border-slate-800">
             <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">إدارة الأخبار الحالية</h2>
             <div className="overflow-x-auto">

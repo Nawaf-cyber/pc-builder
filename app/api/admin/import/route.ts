@@ -25,6 +25,7 @@ export async function POST(req: Request) {
             price: parseFloat(item.price) || 0,
             tdpWattage: parseInt(item.tdpWattage) || 0,
             specs: parsedSpecs,
+            description: item.description || null, // إضافة الوصف هنا
             imageUrl: item.imageUrl || null,
             amazonUrl: item.amazonUrl || null,
             cazasouqUrl: item.cazasouqUrl || null,

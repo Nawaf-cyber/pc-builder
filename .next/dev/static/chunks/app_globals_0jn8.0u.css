@@ -1169,6 +1169,10 @@
     font-weight: var(--font-weight-semibold);
   }
 
+  .break-words {
+    overflow-wrap: break-word;
+  }
+
   .whitespace-pre-line {
     white-space: pre-line;
   }

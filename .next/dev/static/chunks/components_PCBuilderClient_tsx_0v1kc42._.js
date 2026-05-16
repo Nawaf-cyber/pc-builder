@@ -12,13 +12,11 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.signature();
 'use client';
 ;
-// مكون القائمة المنسدلة القابلة للبحث
 const SearchableSelect = ({ category, selectedComponent, onSelect, onShowDetails })=>{
     _s();
     const [isOpen, setIsOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [searchTerm, setSearchTerm] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
     const wrapperRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
-    // إغلاق القائمة عند النقر خارجها
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "SearchableSelect.useEffect": ()=>{
             function handleClickOutside(event) {
@@ -46,7 +44,7 @@ const SearchableSelect = ({ category, selectedComponent, onSelect, onShowDetails
                         children: selectedComponent ? `${selectedComponent.brand} ${selectedComponent.name} - $${selectedComponent.price}` : `-- اختر ${category.name} --`
                     }, void 0, false, {
                         fileName: "[project]/components/PCBuilderClient.tsx",
-                        lineNumber: 61,
+                        lineNumber: 59,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -54,13 +52,13 @@ const SearchableSelect = ({ category, selectedComponent, onSelect, onShowDetails
                         children: "▼"
                     }, void 0, false, {
                         fileName: "[project]/components/PCBuilderClient.tsx",
-                        lineNumber: 64,
+                        lineNumber: 62,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/PCBuilderClient.tsx",
-                lineNumber: 57,
+                lineNumber: 55,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             isOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -78,12 +76,12 @@ const SearchableSelect = ({ category, selectedComponent, onSelect, onShowDetails
                             autoFocus: true
                         }, void 0, false, {
                             fileName: "[project]/components/PCBuilderClient.tsx",
-                            lineNumber: 70,
+                            lineNumber: 68,
                             columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/components/PCBuilderClient.tsx",
-                        lineNumber: 69,
+                        lineNumber: 67,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -105,7 +103,7 @@ const SearchableSelect = ({ category, selectedComponent, onSelect, onShowDetails
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/PCBuilderClient.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 90,
                                         columnNumber: 19
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -119,55 +117,55 @@ const SearchableSelect = ({ category, selectedComponent, onSelect, onShowDetails
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/PCBuilderClient.tsx",
-                                                lineNumber: 94,
+                                                lineNumber: 92,
                                                 columnNumber: 21
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                 onClick: (e)=>{
-                                                    e.stopPropagation(); // منع اختيار القطعة عند النقر على التفاصيل
+                                                    e.stopPropagation();
                                                     onShowDetails(comp);
                                                 },
                                                 className: "px-2 py-1 text-xs bg-gray-200 dark:bg-slate-600 hover:bg-gray-300 dark:hover:bg-slate-500 text-gray-800 dark:text-white rounded",
                                                 children: "التفاصيل"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/PCBuilderClient.tsx",
-                                                lineNumber: 95,
+                                                lineNumber: 93,
                                                 columnNumber: 21
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/PCBuilderClient.tsx",
-                                        lineNumber: 93,
+                                        lineNumber: 91,
                                         columnNumber: 19
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, comp.id, true, {
                                 fileName: "[project]/components/PCBuilderClient.tsx",
-                                lineNumber: 83,
+                                lineNumber: 81,
                                 columnNumber: 17
                             }, ("TURBOPACK compile-time value", void 0))) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                             className: "p-3 text-gray-500 text-center",
-                            children: "لا توجد نتائج"
+                            children: "لا توجد نتائج متوافقة"
                         }, void 0, false, {
                             fileName: "[project]/components/PCBuilderClient.tsx",
-                            lineNumber: 108,
+                            lineNumber: 106,
                             columnNumber: 15
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/components/PCBuilderClient.tsx",
-                        lineNumber: 80,
+                        lineNumber: 78,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/PCBuilderClient.tsx",
-                lineNumber: 68,
+                lineNumber: 66,
                 columnNumber: 9
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/components/PCBuilderClient.tsx",
-        lineNumber: 56,
+        lineNumber: 54,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };
@@ -190,6 +188,47 @@ function PCBuilderClient({ categories }) {
                 ...prev,
                 [categoryName]: component
             }));
+    };
+    const parseSpecs = (specsStr)=>{
+        if (!specsStr) return {};
+        return typeof specsStr === 'string' ? JSON.parse(specsStr) : specsStr;
+    };
+    const getFilteredComponents = (categoryName, components)=>{
+        const cpu = selectedComponents['CPU'];
+        const mobo = selectedComponents['Motherboard'];
+        const ram = selectedComponents['RAM'];
+        const gpu = selectedComponents['GPU'];
+        const pcCase = selectedComponents['Case'];
+        return components.filter((comp)=>{
+            const specs = parseSpecs(comp.specs);
+            if (categoryName === 'Motherboard') {
+                if (cpu) {
+                    const cpuSpecs = parseSpecs(cpu.specs);
+                    if (specs.socket && cpuSpecs.socket && specs.socket !== cpuSpecs.socket) return false;
+                }
+                if (ram) {
+                    const ramSpecs = parseSpecs(ram.specs);
+                    if (specs.ramType && ramSpecs.type && specs.ramType !== ramSpecs.type) return false;
+                }
+            }
+            if (categoryName === 'CPU' && mobo) {
+                const moboSpecs = parseSpecs(mobo.specs);
+                if (specs.socket && moboSpecs.socket && specs.socket !== moboSpecs.socket) return false;
+            }
+            if (categoryName === 'RAM' && mobo) {
+                const moboSpecs = parseSpecs(mobo.specs);
+                if (specs.type && moboSpecs.ramType && specs.type !== moboSpecs.ramType) return false;
+            }
+            if (categoryName === 'Case' && gpu) {
+                const gpuSpecs = parseSpecs(gpu.specs);
+                if (specs.maxGpuLength && gpuSpecs.lengthMm && parseFloat(specs.maxGpuLength) < parseFloat(gpuSpecs.lengthMm)) return false;
+            }
+            if (categoryName === 'GPU' && pcCase) {
+                const caseSpecs = parseSpecs(pcCase.specs);
+                if (specs.lengthMm && caseSpecs.maxGpuLength && parseFloat(specs.lengthMm) > parseFloat(caseSpecs.maxGpuLength)) return false;
+            }
+            return true;
+        });
     };
     const checkCompatibility = ()=>{
         const cpu = selectedComponents['CPU'];
@@ -215,14 +254,12 @@ function PCBuilderClient({ categories }) {
             });
             return;
         }
-        // تحليل المواصفات (Parsing JSON) لأنها تأتي كنص من قاعدة البيانات
-        const getSpecs = (comp)=>typeof comp.specs === 'string' ? JSON.parse(comp.specs || '{}') : comp.specs;
-        const cpuSpecs = getSpecs(cpu);
-        const moboSpecs = getSpecs(mobo);
-        const ramSpecs = getSpecs(ram);
-        const gpuSpecs = getSpecs(gpu);
-        const caseSpecs = getSpecs(pcCase);
-        const psuSpecs = getSpecs(psu);
+        const cpuSpecs = parseSpecs(cpu.specs);
+        const moboSpecs = parseSpecs(mobo.specs);
+        const ramSpecs = parseSpecs(ram.specs);
+        const gpuSpecs = parseSpecs(gpu.specs);
+        const caseSpecs = parseSpecs(pcCase.specs);
+        const psuSpecs = parseSpecs(psu.specs);
         if (cpuSpecs?.socket !== moboSpecs?.socket) {
             setResult({
                 status: 'error',
@@ -267,11 +304,10 @@ function PCBuilderClient({ categories }) {
             totalPrice
         });
     };
-    // دالة مساعدة لتنسيق المواصفات في النافذة المنبثقة
     const renderSpecs = (specsStr)=>{
         if (!specsStr) return "لا توجد تفاصيل إضافية.";
         try {
-            const parsed = typeof specsStr === 'string' ? JSON.parse(specsStr) : specsStr;
+            const parsed = parseSpecs(specsStr);
             return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
                 className: "list-disc list-inside space-y-1 mt-2 text-gray-700 dark:text-gray-300",
                 children: Object.entries(parsed).map(([key, value])=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -284,7 +320,7 @@ function PCBuilderClient({ categories }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/PCBuilderClient.tsx",
-                                lineNumber: 197,
+                                lineNumber: 242,
                                 columnNumber: 27
                             }, this),
                             " ",
@@ -292,12 +328,12 @@ function PCBuilderClient({ categories }) {
                         ]
                     }, key, true, {
                         fileName: "[project]/components/PCBuilderClient.tsx",
-                        lineNumber: 197,
+                        lineNumber: 242,
                         columnNumber: 13
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/components/PCBuilderClient.tsx",
-                lineNumber: 195,
+                lineNumber: 240,
                 columnNumber: 9
             }, this);
         } catch (e) {
@@ -317,14 +353,14 @@ function PCBuilderClient({ categories }) {
                                 children: "💻"
                             }, void 0, false, {
                                 fileName: "[project]/components/PCBuilderClient.tsx",
-                                lineNumber: 212,
+                                lineNumber: 256,
                                 columnNumber: 11
                             }, this),
                             " منصة بناء أجهزة الـ PC"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/PCBuilderClient.tsx",
-                        lineNumber: 211,
+                        lineNumber: 255,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -332,13 +368,13 @@ function PCBuilderClient({ categories }) {
                         children: "اختر القطع، ابحث عنها، وتأكد من توافقها"
                     }, void 0, false, {
                         fileName: "[project]/components/PCBuilderClient.tsx",
-                        lineNumber: 214,
+                        lineNumber: 258,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/PCBuilderClient.tsx",
-                lineNumber: 210,
+                lineNumber: 254,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -346,7 +382,12 @@ function PCBuilderClient({ categories }) {
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "grid grid-cols-1 md:grid-cols-2 gap-8 mb-8",
-                        children: categories.map((category)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        children: categories.map((category)=>{
+                            const filteredCategory = {
+                                ...category,
+                                components: getFilteredComponents(category.name, category.components)
+                            };
+                            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "flex flex-col gap-2",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -356,15 +397,15 @@ function PCBuilderClient({ categories }) {
                                                 className: "w-2 h-2 rounded-full bg-blue-500"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/PCBuilderClient.tsx",
-                                                lineNumber: 222,
-                                                columnNumber: 17
+                                                lineNumber: 272,
+                                                columnNumber: 19
                                             }, this),
                                             category.name
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/PCBuilderClient.tsx",
-                                        lineNumber: 221,
-                                        columnNumber: 15
+                                        lineNumber: 271,
+                                        columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "flex gap-3 items-center",
@@ -375,34 +416,38 @@ function PCBuilderClient({ categories }) {
                                                 className: "w-14 h-14 rounded-lg object-contain bg-white dark:bg-slate-800 border p-1 shadow-sm"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/PCBuilderClient.tsx",
-                                                lineNumber: 228,
-                                                columnNumber: 19
+                                                lineNumber: 278,
+                                                columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SearchableSelect, {
-                                                category: category,
+                                                category: filteredCategory,
                                                 selectedComponent: selectedComponents[category.name],
                                                 onSelect: (id)=>handleSelect(category.name, id),
-                                                onShowDetails: (comp)=>setDetailsModal(comp)
+                                                onShowDetails: (comp)=>setDetailsModal({
+                                                        comp,
+                                                        categoryName: category.name
+                                                    })
                                             }, void 0, false, {
                                                 fileName: "[project]/components/PCBuilderClient.tsx",
-                                                lineNumber: 236,
-                                                columnNumber: 17
+                                                lineNumber: 285,
+                                                columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/PCBuilderClient.tsx",
-                                        lineNumber: 226,
-                                        columnNumber: 15
+                                        lineNumber: 276,
+                                        columnNumber: 17
                                     }, this)
                                 ]
                             }, category.id, true, {
                                 fileName: "[project]/components/PCBuilderClient.tsx",
-                                lineNumber: 220,
-                                columnNumber: 13
-                            }, this))
+                                lineNumber: 270,
+                                columnNumber: 15
+                            }, this);
+                        })
                     }, void 0, false, {
                         fileName: "[project]/components/PCBuilderClient.tsx",
-                        lineNumber: 218,
+                        lineNumber: 262,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -411,7 +456,7 @@ function PCBuilderClient({ categories }) {
                         children: "تحقق من التوافقية"
                     }, void 0, false, {
                         fileName: "[project]/components/PCBuilderClient.tsx",
-                        lineNumber: 247,
+                        lineNumber: 297,
                         columnNumber: 9
                     }, this),
                     result.status !== 'idle' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -424,7 +469,7 @@ function PCBuilderClient({ categories }) {
                                     children: result.status === 'success' ? '✅' : '❌'
                                 }, void 0, false, {
                                     fileName: "[project]/components/PCBuilderClient.tsx",
-                                    lineNumber: 258,
+                                    lineNumber: 307,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -435,11 +480,11 @@ function PCBuilderClient({ categories }) {
                                             children: result.message
                                         }, void 0, false, {
                                             fileName: "[project]/components/PCBuilderClient.tsx",
-                                            lineNumber: 260,
+                                            lineNumber: 309,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "mt-4 flex gap-4 text-sm font-bold",
+                                            className: "mt-4 flex gap-4 text-sm font-bold text-gray-800 dark:text-gray-200",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     children: [
@@ -449,46 +494,146 @@ function PCBuilderClient({ categories }) {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/PCBuilderClient.tsx",
-                                                    lineNumber: 264,
+                                                    lineNumber: 313,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     children: [
-                                                        "💰 التكلفة: $",
+                                                        "💰 التكلفة الإجمالية: $",
                                                         result.totalPrice
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/PCBuilderClient.tsx",
-                                                    lineNumber: 265,
+                                                    lineNumber: 314,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/PCBuilderClient.tsx",
-                                            lineNumber: 263,
+                                            lineNumber: 312,
                                             columnNumber: 17
+                                        }, this),
+                                        result.status === 'success' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "mt-6 pt-6 border-t border-green-200 dark:border-green-800/50",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                    className: "font-bold text-green-900 dark:text-green-400 mb-4",
+                                                    children: "🛒 روابط شراء القطع المتوافقة:"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/components/PCBuilderClient.tsx",
+                                                    lineNumber: 320,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "space-y-3",
+                                                    children: Object.entries(selectedComponents).map(([catName, comp])=>{
+                                                        if (!comp || !comp.amazonUrl && !comp.cazasouqUrl) return null;
+                                                        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: "flex flex-col sm:flex-row sm:items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-gray-100 dark:border-slate-700/50 gap-3",
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                    className: "text-sm",
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                            className: "font-bold text-gray-400 dark:text-gray-500 ml-2",
+                                                                            children: [
+                                                                                "[",
+                                                                                catName,
+                                                                                "]"
+                                                                            ]
+                                                                        }, void 0, true, {
+                                                                            fileName: "[project]/components/PCBuilderClient.tsx",
+                                                                            lineNumber: 327,
+                                                                            columnNumber: 31
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                            className: "text-gray-900 dark:text-gray-100 font-medium",
+                                                                            children: [
+                                                                                comp.brand,
+                                                                                " ",
+                                                                                comp.name
+                                                                            ]
+                                                                        }, void 0, true, {
+                                                                            fileName: "[project]/components/PCBuilderClient.tsx",
+                                                                            lineNumber: 328,
+                                                                            columnNumber: 31
+                                                                        }, this)
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/components/PCBuilderClient.tsx",
+                                                                    lineNumber: 326,
+                                                                    columnNumber: 29
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                    className: "flex gap-2",
+                                                                    children: [
+                                                                        comp.amazonUrl && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                                                            href: comp.amazonUrl,
+                                                                            target: "_blank",
+                                                                            rel: "noopener noreferrer",
+                                                                            className: "px-4 py-1.5 bg-yellow-500 hover:bg-yellow-600 text-white text-xs rounded-md font-bold transition-colors shadow-sm",
+                                                                            children: "أمازون"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/components/PCBuilderClient.tsx",
+                                                                            lineNumber: 332,
+                                                                            columnNumber: 33
+                                                                        }, this),
+                                                                        comp.cazasouqUrl && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                                                            href: comp.cazasouqUrl,
+                                                                            target: "_blank",
+                                                                            rel: "noopener noreferrer",
+                                                                            className: "px-4 py-1.5 bg-purple-600 hover:bg-purple-700 text-white text-xs rounded-md font-bold transition-colors shadow-sm",
+                                                                            children: "كازاسوق"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/components/PCBuilderClient.tsx",
+                                                                            lineNumber: 342,
+                                                                            columnNumber: 33
+                                                                        }, this)
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/components/PCBuilderClient.tsx",
+                                                                    lineNumber: 330,
+                                                                    columnNumber: 29
+                                                                }, this)
+                                                            ]
+                                                        }, comp.id, true, {
+                                                            fileName: "[project]/components/PCBuilderClient.tsx",
+                                                            lineNumber: 325,
+                                                            columnNumber: 27
+                                                        }, this);
+                                                    })
+                                                }, void 0, false, {
+                                                    fileName: "[project]/components/PCBuilderClient.tsx",
+                                                    lineNumber: 321,
+                                                    columnNumber: 21
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/components/PCBuilderClient.tsx",
+                                            lineNumber: 319,
+                                            columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/PCBuilderClient.tsx",
-                                    lineNumber: 259,
+                                    lineNumber: 308,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/PCBuilderClient.tsx",
-                            lineNumber: 257,
+                            lineNumber: 306,
                             columnNumber: 14
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/PCBuilderClient.tsx",
-                        lineNumber: 256,
+                        lineNumber: 305,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/PCBuilderClient.tsx",
-                lineNumber: 217,
+                lineNumber: 261,
                 columnNumber: 7
             }, this),
             detailsModal && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -504,7 +649,7 @@ function PCBuilderClient({ categories }) {
                                     children: "تفاصيل القطعة"
                                 }, void 0, false, {
                                     fileName: "[project]/components/PCBuilderClient.tsx",
-                                    lineNumber: 278,
+                                    lineNumber: 369,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -513,13 +658,13 @@ function PCBuilderClient({ categories }) {
                                     children: "✕"
                                 }, void 0, false, {
                                     fileName: "[project]/components/PCBuilderClient.tsx",
-                                    lineNumber: 279,
+                                    lineNumber: 370,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/PCBuilderClient.tsx",
-                            lineNumber: 277,
+                            lineNumber: 368,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -530,24 +675,24 @@ function PCBuilderClient({ categories }) {
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                             className: "text-sm font-bold text-blue-600 dark:text-blue-400",
-                                            children: detailsModal.brand
+                                            children: detailsModal.comp.brand
                                         }, void 0, false, {
                                             fileName: "[project]/components/PCBuilderClient.tsx",
-                                            lineNumber: 288,
+                                            lineNumber: 379,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                                             className: "text-2xl font-bold text-gray-900 dark:text-white mt-1",
-                                            children: detailsModal.name
+                                            children: detailsModal.comp.name
                                         }, void 0, false, {
                                             fileName: "[project]/components/PCBuilderClient.tsx",
-                                            lineNumber: 289,
+                                            lineNumber: 380,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/PCBuilderClient.tsx",
-                                    lineNumber: 287,
+                                    lineNumber: 378,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -561,24 +706,24 @@ function PCBuilderClient({ categories }) {
                                                     children: "السعر"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/PCBuilderClient.tsx",
-                                                    lineNumber: 294,
+                                                    lineNumber: 385,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     className: "font-bold text-lg dark:text-white",
                                                     children: [
                                                         "$",
-                                                        detailsModal.price
+                                                        detailsModal.comp.price
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/PCBuilderClient.tsx",
-                                                    lineNumber: 295,
+                                                    lineNumber: 386,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/PCBuilderClient.tsx",
-                                            lineNumber: 293,
+                                            lineNumber: 384,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -589,30 +734,30 @@ function PCBuilderClient({ categories }) {
                                                     children: "استهلاك الطاقة"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/PCBuilderClient.tsx",
-                                                    lineNumber: 298,
+                                                    lineNumber: 389,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     className: "font-bold text-lg dark:text-white",
                                                     children: [
-                                                        detailsModal.tdpWattage,
+                                                        detailsModal.comp.tdpWattage,
                                                         "W"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/PCBuilderClient.tsx",
-                                                    lineNumber: 299,
+                                                    lineNumber: 390,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/PCBuilderClient.tsx",
-                                            lineNumber: 297,
+                                            lineNumber: 388,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/PCBuilderClient.tsx",
-                                    lineNumber: 292,
+                                    lineNumber: 383,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -623,14 +768,14 @@ function PCBuilderClient({ categories }) {
                                             children: "المواصفات التقنية:"
                                         }, void 0, false, {
                                             fileName: "[project]/components/PCBuilderClient.tsx",
-                                            lineNumber: 304,
+                                            lineNumber: 395,
                                             columnNumber: 17
                                         }, this),
-                                        renderSpecs(detailsModal.specs)
+                                        renderSpecs(detailsModal.comp.specs)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/PCBuilderClient.tsx",
-                                    lineNumber: 303,
+                                    lineNumber: 394,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -641,53 +786,74 @@ function PCBuilderClient({ categories }) {
                                             children: "وصف القطعة:"
                                         }, void 0, false, {
                                             fileName: "[project]/components/PCBuilderClient.tsx",
-                                            lineNumber: 310,
+                                            lineNumber: 400,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                             className: "text-gray-700 dark:text-gray-300 text-sm leading-relaxed whitespace-pre-line",
-                                            children: detailsModal.description || "لا يوجد وصف متوفر لهذه القطعة."
+                                            children: detailsModal.comp.description || "لا يوجد وصف متوفر لهذه القطعة."
                                         }, void 0, false, {
                                             fileName: "[project]/components/PCBuilderClient.tsx",
-                                            lineNumber: 311,
+                                            lineNumber: 401,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/PCBuilderClient.tsx",
-                                    lineNumber: 309,
+                                    lineNumber: 399,
                                     columnNumber: 15
                                 }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                    onClick: ()=>setDetailsModal(null),
-                                    className: "w-full py-3 bg-gray-200 hover:bg-gray-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-gray-800 dark:text-white rounded-xl font-bold transition-colors",
-                                    children: "إغلاق"
-                                }, void 0, false, {
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "flex gap-4",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                            onClick: ()=>{
+                                                handleSelect(detailsModal.categoryName, detailsModal.comp.id);
+                                                setDetailsModal(null);
+                                            },
+                                            className: "flex-1 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition-colors",
+                                            children: "اختيار القطعة"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/PCBuilderClient.tsx",
+                                            lineNumber: 407,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                            onClick: ()=>setDetailsModal(null),
+                                            className: "flex-1 py-3 bg-gray-200 hover:bg-gray-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-gray-800 dark:text-white rounded-xl font-bold transition-colors",
+                                            children: "إغلاق"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/PCBuilderClient.tsx",
+                                            lineNumber: 416,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
                                     fileName: "[project]/components/PCBuilderClient.tsx",
-                                    lineNumber: 316,
+                                    lineNumber: 406,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/PCBuilderClient.tsx",
-                            lineNumber: 286,
+                            lineNumber: 377,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/PCBuilderClient.tsx",
-                    lineNumber: 276,
+                    lineNumber: 367,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/PCBuilderClient.tsx",
-                lineNumber: 275,
+                lineNumber: 366,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/PCBuilderClient.tsx",
-        lineNumber: 207,
+        lineNumber: 252,
         columnNumber: 5
     }, this);
 }

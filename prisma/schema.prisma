@@ -25,12 +25,12 @@ model Component {
   price       Float    @default(0)
   tdpWattage  Int      @default(0)
   specs       Json     
-  description  String?  @db.Text // الحقل الجديد للوصف المطول
   imageUrl    String?  
   amazonUrl   String?  // رابط أمازون
   cazasouqUrl String?  // رابط كازاسوق
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  description String?  // <--- أضف هذا السطر هنا
 
   @@index([categoryId])
 }

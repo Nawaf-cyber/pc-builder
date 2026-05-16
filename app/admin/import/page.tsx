@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function BulkImportPage() {
   const [status, setStatus] = useState<string>('');
@@ -37,10 +38,21 @@ export default function BulkImportPage() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto mt-10 p-6 bg-white rounded-lg shadow border">
-      <h1 className="text-2xl font-bold mb-6 text-gray-800">الرفع المجمع للقطع (Bulk Import)</h1>
+    <div className="max-w-2xl mx-auto mt-10 p-6 bg-white dark:bg-slate-900 rounded-lg shadow border dark:border-slate-800">
       
-      <div className="mb-6 p-4 bg-blue-50 border-l-4 border-blue-500 text-blue-700">
+      {/* زر الرجوع */}
+      <div className="mb-8">
+        <Link 
+          href="/admin" 
+          className="inline-flex items-center gap-2 px-6 py-3 font-bold rounded-lg bg-gray-100 dark:bg-slate-800 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors shadow-sm"
+        >
+          🔙 رجوع للوحة الإدارة
+        </Link>
+      </div>
+
+      <h1 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">الرفع المجمع للقطع (Bulk Import)</h1>
+      
+      <div className="mb-6 p-4 bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 text-blue-700 dark:text-blue-300">
         <p className="font-semibold mb-2">تعليمات:</p>
         <ol className="list-decimal list-inside text-sm space-y-1">
           <li>قم بتجهيز بيانات القطع في ملف Excel.</li>
@@ -56,12 +68,16 @@ export default function BulkImportPage() {
             type="file" 
             accept=".json"
             onChange={handleFileUpload}
-            className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer border rounded-md p-2"
+            className={`block w-full text-sm text-gray-500 dark:text-gray-400 cursor-pointer
+              file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold 
+              file:bg-blue-50 file:text-blue-700 dark:file:bg-blue-900/30 dark:file:text-blue-400 
+              hover:file:bg-blue-100 dark:hover:file:bg-blue-900/50 
+              border dark:border-slate-700 rounded-md p-2 bg-gray-50 dark:bg-slate-800`}
           />
         </label>
         
         {status && (
-          <div className="mt-4 font-medium text-gray-800">
+          <div className="mt-4 font-medium text-gray-800 dark:text-gray-200">
             الحالة: {status}
           </div>
         )}

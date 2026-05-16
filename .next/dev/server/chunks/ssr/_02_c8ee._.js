@@ -42,7 +42,7 @@ __turbopack_async_result__();
 
 return __turbopack_context__.a(async (__turbopack_handle_async_dependencies__, __turbopack_async_result__) => { try {
 
-/* __next_internal_action_entry_do_not_use__ [{"409f6e9ac4795b02ab14aea74301aa910b3aa2ab6b":{"name":"updateNews"},"40a3b80a43f6a5f70ea0713a9d9341ee1595371b5c":{"name":"deleteNews"},"40a473a4089921d8feb67fa0335049d2548ad0d3f7":{"name":"deleteComponent"},"40a975e1caaa9b08a98a6771ddcd14ebfa32c72d71":{"name":"addNews"},"40b89df2867caa551ad15f9bb6f46202bd3e2da34e":{"name":"addComponent"},"40d3d4b184b261b5a40e726b91e43ea6e58f7fae57":{"name":"updateComponent"}},"app/admin/actions.ts",""] */ __turbopack_context__.s([
+/* __next_internal_action_entry_do_not_use__ [{"401ba26a9e88f9519b46d7352f20e8d299c77c9e61":{"name":"addNews"},"402eabbbb8510954b8826645f1260029fbba272175":{"name":"addComponent"},"40479880eb24550815655087c496d4c874c24f2b78":{"name":"deleteComponent"},"40768720576c75fd8b1352a0bda0c7d91bc1563d9f":{"name":"deleteNews"},"40a0bfcc86fd35241d1fedc8bb5f001674c1482590":{"name":"updateComponent"},"40ebe5b0ecca7fa175674d60e21dd5907486e55ce7":{"name":"updateNews"}},"app/admin/actions.ts",""] */ __turbopack_context__.s([
     "addComponent",
     ()=>addComponent,
     "addNews",
@@ -196,12 +196,12 @@ async function deleteNews(formData) {
     updateNews,
     deleteNews
 ]);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(addComponent, "40b89df2867caa551ad15f9bb6f46202bd3e2da34e", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(updateComponent, "40d3d4b184b261b5a40e726b91e43ea6e58f7fae57", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(deleteComponent, "40a473a4089921d8feb67fa0335049d2548ad0d3f7", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(addNews, "40a975e1caaa9b08a98a6771ddcd14ebfa32c72d71", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(updateNews, "409f6e9ac4795b02ab14aea74301aa910b3aa2ab6b", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(deleteNews, "40a3b80a43f6a5f70ea0713a9d9341ee1595371b5c", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(addComponent, "402eabbbb8510954b8826645f1260029fbba272175", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(updateComponent, "40a0bfcc86fd35241d1fedc8bb5f001674c1482590", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(deleteComponent, "40479880eb24550815655087c496d4c874c24f2b78", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(addNews, "401ba26a9e88f9519b46d7352f20e8d299c77c9e61", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(updateNews, "40ebe5b0ecca7fa175674d60e21dd5907486e55ce7", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(deleteNews, "40768720576c75fd8b1352a0bda0c7d91bc1563d9f", null);
 __turbopack_async_result__();
 } catch(e) { __turbopack_async_result__(e); } }, false);}),
 "[project]/.next-internal/server/app/admin/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript) <locals>", ((__turbopack_context__) => {
@@ -229,18 +229,18 @@ __turbopack_async_result__();
 return __turbopack_context__.a(async (__turbopack_handle_async_dependencies__, __turbopack_async_result__) => { try {
 
 __turbopack_context__.s([
-    "409f6e9ac4795b02ab14aea74301aa910b3aa2ab6b",
-    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$admin$2f$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["updateNews"],
-    "40a3b80a43f6a5f70ea0713a9d9341ee1595371b5c",
-    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$admin$2f$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["deleteNews"],
-    "40a473a4089921d8feb67fa0335049d2548ad0d3f7",
-    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$admin$2f$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["deleteComponent"],
-    "40a975e1caaa9b08a98a6771ddcd14ebfa32c72d71",
+    "401ba26a9e88f9519b46d7352f20e8d299c77c9e61",
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$admin$2f$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["addNews"],
-    "40b89df2867caa551ad15f9bb6f46202bd3e2da34e",
+    "402eabbbb8510954b8826645f1260029fbba272175",
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$admin$2f$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["addComponent"],
-    "40d3d4b184b261b5a40e726b91e43ea6e58f7fae57",
-    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$admin$2f$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["updateComponent"]
+    "40479880eb24550815655087c496d4c874c24f2b78",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$admin$2f$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["deleteComponent"],
+    "40768720576c75fd8b1352a0bda0c7d91bc1563d9f",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$admin$2f$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["deleteNews"],
+    "40a0bfcc86fd35241d1fedc8bb5f001674c1482590",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$admin$2f$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["updateComponent"],
+    "40ebe5b0ecca7fa175674d60e21dd5907486e55ce7",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$admin$2f$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["updateNews"]
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f2e$next$2d$internal$2f$server$2f$app$2f$admin$2f$page$2f$actions$2e$js__$7b$__ACTIONS_MODULE0__$3d3e$__$225b$project$5d2f$app$2f$admin$2f$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$2922$__$7d$__$5b$app$2d$rsc$5d$__$28$server__actions__loader$2c$__ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i('[project]/.next-internal/server/app/admin/page/actions.js { ACTIONS_MODULE0 => "[project]/app/admin/actions.ts [app-rsc] (ecmascript)" } [app-rsc] (server actions loader, ecmascript) <locals>');
 var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$admin$2f$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/app/admin/actions.ts [app-rsc] (ecmascript)");

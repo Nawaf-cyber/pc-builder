@@ -1531,6 +1531,16 @@
     }
   }
 
+  .dark\:bg-blue-900\/20:where(.dark, .dark *) {
+    background-color: #1c398e33;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .dark\:bg-blue-900\/20:where(.dark, .dark *) {
+      background-color: color-mix(in oklab, var(--color-blue-900) 20%, transparent);
+    }
+  }
+
   .dark\:bg-blue-900\/30:where(.dark, .dark *) {
     background-color: #1c398e4d;
   }
@@ -1659,6 +1669,20 @@
     color: var(--color-white);
   }
 
+  .dark\:file\:bg-blue-900\/30:where(.dark, .dark *)::file-selector-button {
+    background-color: #1c398e4d;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .dark\:file\:bg-blue-900\/30:where(.dark, .dark *)::file-selector-button {
+      background-color: color-mix(in oklab, var(--color-blue-900) 30%, transparent);
+    }
+  }
+
+  .dark\:file\:text-blue-400:where(.dark, .dark *)::file-selector-button {
+    color: var(--color-blue-400);
+  }
+
   @media (hover: hover) {
     .dark\:hover\:bg-blue-600:where(.dark, .dark *):hover {
       background-color: var(--color-blue-600);
@@ -1716,6 +1740,18 @@
   @media (hover: hover) {
     .dark\:hover\:text-white:where(.dark, .dark *):hover {
       color: var(--color-white);
+    }
+  }
+
+  @media (hover: hover) {
+    .dark\:hover\:file\:bg-blue-900\/50:where(.dark, .dark *):hover::file-selector-button {
+      background-color: #1c398e80;
+    }
+
+    @supports (color: color-mix(in lab, red, red)) {
+      .dark\:hover\:file\:bg-blue-900\/50:where(.dark, .dark *):hover::file-selector-button {
+        background-color: color-mix(in oklab, var(--color-blue-900) 50%, transparent);
+      }
     }
   }
 }

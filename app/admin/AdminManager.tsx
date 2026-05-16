@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link'; // تم إضافة هذا السطر لحل المشكلة
 import { addComponent, deleteComponent, addNews, deleteNews, updateComponent, updateNews } from './actions';
 import toast from 'react-hot-toast';
 
@@ -87,7 +88,7 @@ export default function AdminManager({ categories, components, news }: { categor
   return (
     <div className="flex flex-col gap-8">
       
-      <div className="flex gap-4 border-b border-gray-200 dark:border-slate-800 pb-4">
+      <div className="flex flex-wrap gap-4 border-b border-gray-200 dark:border-slate-800 pb-4">
         <button 
           onClick={() => { setActiveTab('components'); cancelEdit(); }}
           className={`px-6 py-3 font-bold rounded-lg transition-colors ${activeTab === 'components' ? 'bg-blue-600 text-white' : 'bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700'}`}
@@ -100,6 +101,14 @@ export default function AdminManager({ categories, components, news }: { categor
         >
           📰 إدارة الأخبار
         </button>
+
+        {/* الزر الجديد للانتقال لصفحة الـ JSON */}
+        <Link 
+          href="/admin/import" 
+          className="px-6 py-3 font-bold rounded-lg bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors flex items-center gap-2"
+        >
+          📥 استيراد من JSON
+        </Link>
       </div>
 
       {activeTab === 'components' && (
@@ -129,7 +138,6 @@ export default function AdminManager({ categories, components, news }: { categor
               <input type="url" name="amazonUrl" defaultValue={editingComponent?.amazonUrl || ''} placeholder="رابط أمازون (اختياري)" className="p-3 border border-gray-300 dark:border-slate-700 rounded-lg bg-gray-50 dark:bg-slate-800 text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-blue-500 text-left dir-ltr" dir="ltr" />
               <input type="url" name="cazasouqUrl" defaultValue={editingComponent?.cazasouqUrl || ''} placeholder="رابط كازاسوق (اختياري)" className="p-3 border border-gray-300 dark:border-slate-700 rounded-lg bg-gray-50 dark:bg-slate-800 text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-blue-500 text-left dir-ltr" dir="ltr" />
               
-              {/* الحقل الجديد للوصف */}
               <textarea name="description" defaultValue={editingComponent?.description || ''} placeholder="وصف تفصيلي للقطعة (اختياري، يظهر في نافذة التفاصيل)" className="md:col-span-2 p-3 h-24 border border-gray-300 dark:border-slate-700 rounded-lg bg-gray-50 dark:bg-slate-800 text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-blue-500"></textarea>
 
               <div className="md:col-span-2 p-4 border border-gray-300 dark:border-slate-700 rounded-lg bg-gray-50 dark:bg-slate-800/50 mt-4">
@@ -211,10 +219,8 @@ export default function AdminManager({ categories, components, news }: { categor
         </div>
       )}
 
-      {/* باقي الكود الخاص بالأخبار... */}
       {activeTab === 'news' && (
         <div className="flex flex-col gap-8 animate-in fade-in duration-300">
-          {/* محتوى إدارة الأخبار كما هو تماماً في كودك السابق */}
           <div className="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-sm border border-gray-200 dark:border-slate-800">
             <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
               {editingNews ? 'تعديل الخبر' : 'إضافة خبر جديد'}

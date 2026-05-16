@@ -4,6 +4,7 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { prisma } from "../../lib/prisma";
 import AdminManager from "./AdminManager";
+import Link from 'next/link';
 
 // ضع إيميلك أو إيميلات الإدارة هنا
 const ADMIN_EMAILS = ["admin@pcbuilder.com"];
@@ -33,6 +34,14 @@ export default async function AdminDashboard() {
   return (
     <main className="min-h-screen bg-gray-50 dark:bg-slate-950 py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-200">
       <div className="max-w-6xl mx-auto">
+        <div className="mb-8">
+        <Link 
+          href="/admin" 
+          className="inline-flex items-center gap-2 px-6 py-3 font-bold rounded-lg bg-gray-200 dark:bg-slate-800 text-gray-800 dark:text-white hover:bg-gray-300 dark:hover:bg-slate-700 transition-colors shadow-sm"
+        >
+          🔙 رجوع للوحة الإدارة
+        </Link>
+         </div>
         <div className="flex justify-between items-center border-b-2 border-gray-200 dark:border-slate-800 pb-4 mb-8">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white">لوحة تحكم النظام</h1>
           <span className="px-4 py-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold rounded-lg shadow-sm">

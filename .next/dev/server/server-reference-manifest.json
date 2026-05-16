@@ -1,6 +1,6 @@
 {
   "node": {
-    "40b89df2867caa551ad15f9bb6f46202bd3e2da34e": {
+    "402eabbbb8510954b8826645f1260029fbba272175": {
       "workers": {
         "app/admin/page": {
           "moduleId": "[project]/.next-internal/server/app/admin/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
@@ -12,7 +12,7 @@
       "filename": "app/admin/actions.ts",
       "exportedName": "addComponent"
     },
-    "40a473a4089921d8feb67fa0335049d2548ad0d3f7": {
+    "40479880eb24550815655087c496d4c874c24f2b78": {
       "workers": {
         "app/admin/page": {
           "moduleId": "[project]/.next-internal/server/app/admin/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
@@ -24,7 +24,7 @@
       "filename": "app/admin/actions.ts",
       "exportedName": "deleteComponent"
     },
-    "40a975e1caaa9b08a98a6771ddcd14ebfa32c72d71": {
+    "401ba26a9e88f9519b46d7352f20e8d299c77c9e61": {
       "workers": {
         "app/admin/page": {
           "moduleId": "[project]/.next-internal/server/app/admin/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
@@ -36,7 +36,7 @@
       "filename": "app/admin/actions.ts",
       "exportedName": "addNews"
     },
-    "40a3b80a43f6a5f70ea0713a9d9341ee1595371b5c": {
+    "40768720576c75fd8b1352a0bda0c7d91bc1563d9f": {
       "workers": {
         "app/admin/page": {
           "moduleId": "[project]/.next-internal/server/app/admin/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
@@ -48,7 +48,7 @@
       "filename": "app/admin/actions.ts",
       "exportedName": "deleteNews"
     },
-    "40d3d4b184b261b5a40e726b91e43ea6e58f7fae57": {
+    "40a0bfcc86fd35241d1fedc8bb5f001674c1482590": {
       "workers": {
         "app/admin/page": {
           "moduleId": "[project]/.next-internal/server/app/admin/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
@@ -60,7 +60,7 @@
       "filename": "app/admin/actions.ts",
       "exportedName": "updateComponent"
     },
-    "409f6e9ac4795b02ab14aea74301aa910b3aa2ab6b": {
+    "40ebe5b0ecca7fa175674d60e21dd5907486e55ce7": {
       "workers": {
         "app/admin/page": {
           "moduleId": "[project]/.next-internal/server/app/admin/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
@@ -74,5 +74,5 @@
     }
   },
   "edge": {},
-  "encryptionKey": "aZIabiMCcGbO7TslMvfkqnLdvzviWnQBb5yQsJSXrgY="
+  "encryptionKey": "GVz4vI8PcfTOopQIz/s8cYIMp9/URzoJoBr1HWUOUW4="
 }
